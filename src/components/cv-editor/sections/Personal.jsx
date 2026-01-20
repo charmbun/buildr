@@ -1,0 +1,73 @@
+function Personal({ data, setData }) {
+  function handleChange(e) {
+    const { name, value } = e.target;
+
+    setData((prevData) => ({
+      ...prevData,
+      personal: {
+        ...prevData.personal,
+        [name]: value,
+      },
+    }));
+  }
+
+  return (
+    <section>
+      <h2>Personal Information</h2>
+
+      <div className="form-group">
+        <label htmlFor="name">NAME *</label>
+        <input
+          className="form-control"
+          type="text"
+          name="name"
+          id="name"
+          required
+          value={data.personal.name}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="email">EMAIL *</label>
+        <input
+          className="form-control"
+          type="email"
+          name="email"
+          id="email"
+          required
+          value={data.personal.email}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="linkPortfolio">PORTFOLIO LINK</label>
+        <input
+          className="form-control"
+          type="url"
+          name="linkPortfolio"
+          id="linkPortfolio"
+          required
+          value={data.personal.linkPortfolio}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="linkGithub">GITHUB LINK</label>
+        <input
+          className="form-control"
+          type="url"
+          name="linkGithub"
+          id="linkGithub"
+          required
+          value={data.personal.linkGithub}
+          onChange={handleChange}
+        />
+      </div>
+    </section>
+  );
+}
+
+export default Personal;

@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+:root {
+  font-family: "Lato", sans-serif;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+:root {
+  --primary: #2d3e65;
+  --secondary: #2c3750;
+  --neutral: #242c3f;
+  --accent: pink;
+}
