@@ -14,12 +14,14 @@ function SortableSidebarItem({ id, icon, active, onClick }) {
     <button
       ref={setNodeRef}
       style={style}
-      className={active ? "active" : ""}
+      className={`sidebar-item ${active ? "active" : ""}`}
       onClick={onClick}
-      {...attributes}
-      {...listeners}
     >
-      <img src={icon} alt={id} className="icon" />
+      <span className="drag-handle" {...attributes} {...listeners}>
+        ☰
+      </span>
+
+      <img src={icon} className="icon" />
     </button>
   );
 }
