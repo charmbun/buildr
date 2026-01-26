@@ -16,6 +16,15 @@ function App() {
     }
   });
 
+  const [sectionOrder, setSectionOrder] = useState([
+    "personal",
+    "skills",
+    "experience",
+    "projects",
+    "education",
+    "certificates",
+  ]);
+
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -40,8 +49,10 @@ function App() {
         setData={setData}
         onClear={clearResume}
         onLoadSample={loadSample}
+        sectionOrder={sectionOrder}
+        setSectionOrder={setSectionOrder}
       />
-      <Preview data={data} />
+      <Preview data={data} sectionOrder={sectionOrder} />
     </div>
   );
 }

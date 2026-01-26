@@ -22,17 +22,16 @@ const SECTIONS = {
   certificates: Certificates,
 };
 
-function Editor({ data, setData, onClear, onLoadSample }) {
+function Editor({
+  data,
+  setData,
+  sectionOrder,
+  setSectionOrder,
+  onClear,
+  onLoadSample,
+}) {
   const [activeSection, setActiveSection] = useState("personal");
   const ActiveSectionComponent = SECTIONS[activeSection];
-  const [sectionOrder, setSectionOrder] = useState([
-    "personal",
-    "skills",
-    "experience",
-    "projects",
-    "education",
-    "certificates",
-  ]);
 
   return (
     <div className="editor-layout">
