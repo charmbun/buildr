@@ -1,6 +1,6 @@
 import "/src/styles/Editor.css";
 import { useState } from "react";
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar/Sidebar";
 
 import Personal from "./sections/Personal";
 import Skills from "./sections/Skills";
@@ -25,12 +25,22 @@ const SECTIONS = {
 function Editor({ data, setData, onClear, onLoadSample }) {
   const [activeSection, setActiveSection] = useState("personal");
   const ActiveSectionComponent = SECTIONS[activeSection];
+  const [sectionOrder, setSectionOrder] = useState([
+    "personal",
+    "skills",
+    "experience",
+    "projects",
+    "education",
+    "certificates",
+  ]);
 
   return (
     <div className="editor-layout">
       <Sidebar
         activeSection={activeSection}
         setActiveSection={setActiveSection}
+        sectionOrder={sectionOrder}
+        setSectionOrder={setSectionOrder}
       />
 
       <div className="editor-content">

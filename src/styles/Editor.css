@@ -49,6 +49,18 @@
   box-shadow: inset 3px 0 0 var(--accent);
 }
 
+.sidebar button {
+  cursor: grab;
+}
+
+.sidebar button:active {
+  cursor: grabbing;
+}
+
+.sidebar button.active {
+  background-color: var(--secondary);
+}
+
 .icon {
   height: 24px;
 }
