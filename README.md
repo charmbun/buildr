@@ -23,15 +23,19 @@ Many engineers struggle with resumes not due to lack of experience, but because 
 
 The [r/EngineeringResumes](https://www.reddit.com/r/EngineeringResumes/wiki/index/) community consistently showcases real-world résumés that successfully land interviews. One widely shared and battle-tested [Overleaf template](https://www.overleaf.com/project/662939053eb1dc8f0f3c617f) became a strong reference for what _actually works_ in practice.
 
-This project translates that proven, no-nonsense résumé style into an **interactive web-based editor**, allowing users to:
+buildR. brings this proven, no-nonsense résumé style into an interactive, web-based editor, allowing users to:
 
 - Focus on content instead of layout
 - Maintain a strict, single-page A4 format
 - Export a print-ready PDF without manual tweaking
+- Reorder sections with drag-and-drop
+- Save progress locally for persistent editing
 
 ## Features
 
 - Section-based editor
+- Drag-and-drop ordering
 - Live preview
 - Strict A4 layout
 - Export to PDF
+- Local storage persistence
