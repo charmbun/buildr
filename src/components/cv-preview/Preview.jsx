@@ -28,10 +28,143 @@ function hasAnyValue(obj) {
 }
 
 /* ----------------------------------------
+   Section Renderers
+---------------------------------------- */
+
+function SkillsSection({ skills }) {
+  if (!skills.some(hasAnyValue)) return null;
+
+  return (
+    <section className="preview-section">
+      <h2>Skills</h2>
+      {skills.filter(hasAnyValue).map((skill) => (
+        <div key={skill.id}>
+          {skill.groupName && <strong>{skill.groupName}</strong>}
+          {skill.items && (
+            <>
+              {skill.groupName && ": "}
+              <span>{skill.items}</span>
+            </>
+          )}
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function ExperienceSection({ experience }) {
+  if (!experience.some(hasAnyValue)) return null;
+
+  return (
+    <section className="preview-section">
+      <h2>Experience</h2>
+      {experience.filter(hasAnyValue).map((exp) => (
+        <div className="section-entry" key={exp.id}>
+          {(exp.position || exp.dateFrom || exp.dateTo) && (
+            <div className="first-row">
+              {exp.position && <strong>{exp.position}</strong>}
+              {(exp.dateFrom || exp.dateTo) && (
+                <p>{[exp.dateFrom, exp.dateTo].filter(Boolean).join(" - ")}</p>
+              )}
+            </div>
+          )}
+          {exp.company && <i>{exp.company}</i>}
+          {renderBullets(exp.description)}
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function EducationSection({ education }) {
+  if (!education.some(hasAnyValue)) return null;
+
+  return (
+    <section className="preview-section">
+      <h2>Education</h2>
+      {education.filter(hasAnyValue).map((edu) => (
+        <div className="section-entry" key={edu.id}>
+          {(edu.school || edu.dateGraduated) && (
+            <div className="first-row">
+              {edu.school && <strong>{edu.school}</strong>}
+              {edu.dateGraduated && <p>{edu.dateGraduated}</p>}
+            </div>
+          )}
+          {edu.degree && <i>{edu.degree}</i>}
+          {renderBullets(edu.description)}
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function ProjectsSection({ projects }) {
+  if (!projects.some(hasAnyValue)) return null;
+
+  return (
+    <section className="preview-section">
+      <h2>Projects</h2>
+      {projects.filter(hasAnyValue).map((proj) => (
+        <div className="section-entry" key={proj.id}>
+          {(proj.title || proj.link) && (
+            <div className="first-row">
+              {proj.title && <strong>{proj.title}</strong>}
+              {proj.link && (
+                <a
+                  href={`https://${proj.link}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {proj.link}
+                </a>
+              )}
+            </div>
+          )}
+          {renderBullets(proj.description)}
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function CertificatesSection({ certificates }) {
+  if (!certificates.some(hasAnyValue)) return null;
+
+  return (
+    <section className="preview-section">
+      <h2>Certificates</h2>
+      {certificates.filter(hasAnyValue).map((cert) => (
+        <div className="section-entry" key={cert.id}>
+          {(cert.name || cert.dateIssued) && (
+            <div className="first-row">
+              {cert.name && <strong>{cert.name}</strong>}
+              {cert.dateIssued && <p>{cert.dateIssued}</p>}
+            </div>
+          )}
+          {cert.organization && <i>{cert.organization}</i>}
+        </div>
+      ))}
+    </section>
+  );
+}
+
+/* ----------------------------------------
+   Section Map
+---------------------------------------- */
+
+const SECTION_RENDERERS = {
+  skills: SkillsSection,
+  experience: ExperienceSection,
+  education: EducationSection,
+  projects: ProjectsSection,
+  certificates: CertificatesSection,
+};
+
+/* ----------------------------------------
    Component
 ---------------------------------------- */
 
-function Preview({ data }) {
+function Preview({ data, sectionOrder }) {
   const { personal } = data;
 
   const contactLinks = [
@@ -61,128 +194,21 @@ function Preview({ data }) {
   return (
     <div className="preview-layout">
       <div className="a4-page">
-        {/* PERSONAL */}
+        {/* PERSONAL HEADER */}
         {(personal.name || contactLinks.length > 0) && (
           <header className="preview-header">
             {personal.name && <h1>{personal.name}</h1>}
             {contactLinks.length > 0 && (
-              <p>{contactLinks.reduce((prev, curr) => [prev, " • ", curr])}</p>
+              <p>{contactLinks.reduce((p, c) => [p, " • ", c])}</p>
             )}
           </header>
         )}
 
-        {/* SKILLS */}
-        {data.skills.some(hasAnyValue) && (
-          <section className="preview-section">
-            <h2>Skills</h2>
-
-            {data.skills.filter(hasAnyValue).map((skill) => (
-              <div key={skill.id}>
-                {skill.groupName && <strong>{skill.groupName}</strong>}
-                {skill.items && (
-                  <>
-                    {skill.groupName && ": "}
-                    <span>{skill.items}</span>
-                  </>
-                )}
-              </div>
-            ))}
-          </section>
-        )}
-
-        {/* EXPERIENCE */}
-        {data.experience.some(hasAnyValue) && (
-          <section className="preview-section">
-            <h2>Experience</h2>
-
-            {data.experience.filter(hasAnyValue).map((exp) => (
-              <div className="section-entry" key={exp.id}>
-                {(exp.position || exp.dateFrom || exp.dateTo) && (
-                  <div className="first-row">
-                    {exp.position && <strong>{exp.position}</strong>}
-                    {(exp.dateFrom || exp.dateTo) && (
-                      <p>
-                        {[exp.dateFrom, exp.dateTo].filter(Boolean).join(" - ")}
-                      </p>
-                    )}
-                  </div>
-                )}
-
-                {exp.company && <i>{exp.company}</i>}
-                {renderBullets(exp.description)}
-              </div>
-            ))}
-          </section>
-        )}
-
-        {/* EDUCATION */}
-        {data.education.some(hasAnyValue) && (
-          <section className="preview-section">
-            <h2>Education</h2>
-
-            {data.education.filter(hasAnyValue).map((edu) => (
-              <div className="section-entry" key={edu.id}>
-                {(edu.school || edu.dateGraduated) && (
-                  <div className="first-row">
-                    {edu.school && <strong>{edu.school}</strong>}
-                    {edu.dateGraduated && <p>{edu.dateGraduated}</p>}
-                  </div>
-                )}
-
-                {edu.degree && <i>{edu.degree}</i>}
-                {renderBullets(edu.description)}
-              </div>
-            ))}
-          </section>
-        )}
-
-        {/* PROJECTS */}
-        {data.projects.some(hasAnyValue) && (
-          <section className="preview-section">
-            <h2>Projects</h2>
-
-            {data.projects.filter(hasAnyValue).map((proj) => (
-              <div className="section-entry" key={proj.id}>
-                {(proj.title || proj.link) && (
-                  <div className="first-row">
-                    {proj.title && <strong>{proj.title}</strong>}
-                    {proj.link && (
-                      <a
-                        href={`https://${proj.link}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {proj.link}
-                      </a>
-                    )}
-                  </div>
-                )}
-
-                {renderBullets(proj.description)}
-              </div>
-            ))}
-          </section>
-        )}
-
-        {/* CERTIFICATES */}
-        {data.certificates.some(hasAnyValue) && (
-          <section className="preview-section">
-            <h2>Certificates</h2>
-
-            {data.certificates.filter(hasAnyValue).map((cert) => (
-              <div className="section-entry" key={cert.id}>
-                {(cert.name || cert.dateIssued) && (
-                  <div className="first-row">
-                    {cert.name && <strong>{cert.name}</strong>}
-                    {cert.dateIssued && <p>{cert.dateIssued}</p>}
-                  </div>
-                )}
-
-                {cert.organization && <i>{cert.organization}</i>}
-              </div>
-            ))}
-          </section>
-        )}
+        {/* ORDERED SECTIONS */}
+        {sectionOrder.map((key) => {
+          const Section = SECTION_RENDERERS[key];
+          return Section ? <Section key={key} {...data} /> : null;
+        })}
       </div>
     </div>
   );
