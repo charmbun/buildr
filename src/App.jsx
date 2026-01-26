@@ -6,6 +6,15 @@ import { emptyData, sampleData } from "./data";
 
 const STORAGE_KEY = "buildr-resume-v1";
 
+const DEFAULT_ORDER = [
+  "personal",
+  "skills",
+  "experience",
+  "projects",
+  "education",
+  "certificates",
+];
+
 function App() {
   const [data, setData] = useState(() => {
     try {
@@ -16,15 +25,6 @@ function App() {
     }
   });
 
-  const [sectionOrder, setSectionOrder] = useState([
-    "personal",
-    "skills",
-    "experience",
-    "projects",
-    "education",
-    "certificates",
-  ]);
-
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -33,13 +33,33 @@ function App() {
     }
   }, [data]);
 
+  const [sectionOrder, setSectionOrder] = useState(() => {
+    try {
+      const saved = localStorage.getItem("buildr:sectionOrder");
+      return saved ? JSON.parse(saved) : DEFAULT_ORDER;
+    } catch {
+      return DEFAULT_ORDER;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("buildr:sectionOrder", JSON.stringify(sectionOrder));
+    } catch {
+      // silent fail (private mode / storage full)
+    }
+  }, [sectionOrder]);
+
   function clearResume() {
     localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem("buildr:sectionOrder");
     setData(emptyData);
+    setSectionOrder(DEFAULT_ORDER);
   }
 
   function loadSample() {
     setData(sampleData);
+    setSectionOrder(DEFAULT_ORDER);
   }
 
   return (
