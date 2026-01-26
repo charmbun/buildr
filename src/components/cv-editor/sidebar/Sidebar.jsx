@@ -1,4 +1,5 @@
 import "/src/styles/Sidebar.css";
+
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
   SortableContext,
@@ -16,6 +17,12 @@ import projectsIcon from "../../../assets/icons/projects.svg";
 import educationIcon from "../../../assets/icons/education.svg";
 import certificateIcon from "../../../assets/icons/certificate.svg";
 
+/* ----------------------------------------
+   CONSTANTS
+---------------------------------------- */
+
+const FIXED_SECTION = "personal";
+
 const sectionIcons = {
   personal: personalIcon,
   skills: skillsIcon,
@@ -25,33 +32,59 @@ const sectionIcons = {
   certificates: certificateIcon,
 };
 
+/* ----------------------------------------
+   COMPONENT
+---------------------------------------- */
+
 function Sidebar({
   sectionOrder,
   setSectionOrder,
   activeSection,
   setActiveSection,
 }) {
-  function handleDragEnd(event) {
-    const { active, over } = event;
-    if (!over || active.id === over.id) return;
+  const sortableSections = sectionOrder.filter((id) => id !== FIXED_SECTION);
 
-    setSectionOrder((prev) =>
-      arrayMove(prev, prev.indexOf(active.id), prev.indexOf(over.id)),
-    );
+  function handleDragEnd({ active, over }) {
+    if (!over) return;
+    if (active.id === FIXED_SECTION || over.id === FIXED_SECTION) return;
+
+    setSectionOrder((prev) => {
+      const sortable = prev.filter((id) => id !== FIXED_SECTION);
+
+      const oldIndex = sortable.indexOf(active.id);
+      const newIndex = sortable.indexOf(over.id);
+
+      const reordered = arrayMove(sortable, oldIndex, newIndex);
+
+      return [FIXED_SECTION, ...reordered];
+    });
   }
 
   return (
     <nav className="sidebar">
+      {/* ───────── FIXED PERSONAL (NOT DRAGGABLE) ───────── */}
+      <button
+        className={activeSection === FIXED_SECTION ? "active" : ""}
+        onClick={() => setActiveSection(FIXED_SECTION)}
+      >
+        <img
+          src={sectionIcons[FIXED_SECTION]}
+          alt="Personal"
+          className="icon"
+        />
+      </button>
+
+      {/* ───────── DRAGGABLE SECTIONS ───────── */}
       <DndContext
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
         modifiers={[restrictToVerticalAxis]}
       >
         <SortableContext
-          items={sectionOrder}
+          items={sortableSections}
           strategy={verticalListSortingStrategy}
         >
-          {sectionOrder.map((id) => (
+          {sortableSections.map((id) => (
             <SortableSidebarItem
               key={id}
               id={id}
