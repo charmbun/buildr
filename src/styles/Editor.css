@@ -17,55 +17,6 @@
 }
 
 /* =====================================================
-   SIDEBAR
-   ===================================================== */
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  padding-top: 24px;
-  background-color: var(--primary);
-  transition:
-    background-color 0.2s ease,
-    transform 0.1s ease;
-}
-
-.sidebar button {
-  border: none;
-  height: 48px;
-  background-color: var(--primary);
-}
-
-.sidebar button:active {
-  transform: scale(0.95);
-}
-
-.sidebar button:hover {
-  background-color: var(--secondary);
-}
-
-.sidebar button.active {
-  background-color: var(--secondary);
-  box-shadow: inset 3px 0 0 var(--accent);
-}
-
-.sidebar button {
-  cursor: grab;
-}
-
-.sidebar button:active {
-  cursor: grabbing;
-}
-
-.sidebar button.active {
-  background-color: var(--secondary);
-}
-
-.icon {
-  height: 24px;
-}
-
-/* =====================================================
    LISTS
    ===================================================== */
 

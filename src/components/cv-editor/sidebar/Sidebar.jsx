@@ -1,3 +1,4 @@
+import "/src/styles/Sidebar.css";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
   SortableContext,
