@@ -34,6 +34,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .drag-handle {
@@ -50,17 +53,6 @@
 
 .sidebar-item:hover .drag-handle {
   opacity: 1;
-}
-
-.sidebar-item {
-  transition:
-    transform 0.15s ease,
-    background-color 0.15s ease;
-}
-
-.sidebar-item:hover {
-  background-color: var(--secondary);
-  transform: translateX(2px);
 }
 
 .icon {
