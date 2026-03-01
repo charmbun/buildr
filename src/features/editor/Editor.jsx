@@ -9,10 +9,6 @@ import Projects from "./sections/Projects";
 import Education from "./sections/Education";
 import Certificates from "./sections/Certificates";
 
-import saveIcon from "../../assets/icons/save.svg";
-import deleteIcon from "../../assets/icons/delete.svg";
-import loadIcon from "../../assets/icons/wand.svg";
-
 const SECTIONS = {
   personal: Personal,
   skills: Skills,
