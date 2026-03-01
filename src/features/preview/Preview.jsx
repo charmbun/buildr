@@ -1,4 +1,4 @@
-import "/src/styles/Preview.css";
+import styles from "./Preview.module.css";
 import SkillsSection from "./sections/SkillsPreview";
 import ExperienceSection from "./sections/ExperiencePreview";
 import EducationSection from "./sections/EducationPreview";
@@ -41,11 +41,11 @@ function Preview({ data, sectionOrder }) {
   ].filter(Boolean);
 
   return (
-    <div className="preview-layout">
-      <div className="a4-page">
+    <div className={styles.previewLayout}>
+      <div className={styles.a4Page}>
         {/* PERSONAL HEADER */}
         {(personal.name || contactLinks.length > 0) && (
-          <header className="preview-header">
+          <header className={styles.previewHeader}>
             {personal.name && <h1>{personal.name}</h1>}
             {contactLinks.length > 0 && (
               <p>{contactLinks.reduce((p, c) => [p, " • ", c])}</p>

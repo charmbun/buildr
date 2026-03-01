@@ -1,15 +1,13 @@
-export function renderBullets(text) {
+export function renderBullets(text, bulletClass) {
   if (!text?.trim()) return null;
-
   const lines = text
     .split("\n")
     .map((l) => l.trim())
     .filter(Boolean);
-
   if (lines.length === 0) return null;
 
   return (
-    <ul className="preview-bullets">
+    <ul className={bulletClass}>
       {lines.map((line, i) => (
         <li key={i}>{line}</li>
       ))}

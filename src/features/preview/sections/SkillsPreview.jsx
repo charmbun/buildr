@@ -1,13 +1,14 @@
+import styles from "../Preview.module.css";
 import { hasAnyValue } from "../utils";
 
 function SkillsSection({ skills }) {
   if (!skills.some(hasAnyValue)) return null;
 
   return (
-    <section className="preview-section">
+    <section>
       <h2>Skills</h2>
       {skills.filter(hasAnyValue).map((skill) => (
-        <div key={skill.id}>
+        <div className={styles.sectionEntry} key={skill.id}>
           {skill.groupName && <strong>{skill.groupName}</strong>}
           {skill.items && (
             <>

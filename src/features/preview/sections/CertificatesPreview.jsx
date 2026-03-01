@@ -1,15 +1,16 @@
+import styles from "../Preview.module.css";
 import { hasAnyValue } from "../utils";
 
 function CertificatesSection({ certificates }) {
   if (!certificates.some(hasAnyValue)) return null;
 
   return (
-    <section className="preview-section">
+    <section>
       <h2>Certificates</h2>
       {certificates.filter(hasAnyValue).map((cert) => (
-        <div className="section-entry" key={cert.id}>
+        <div className={styles.sectionEntry} key={cert.id}>
           {(cert.name || cert.dateIssued) && (
-            <div className="first-row">
+            <div className={styles.firstRow}>
               {cert.name && <strong>{cert.name}</strong>}
               {cert.dateIssued && <p>{cert.dateIssued}</p>}
             </div>

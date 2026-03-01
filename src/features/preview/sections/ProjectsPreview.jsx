@@ -1,15 +1,16 @@
+import styles from "../Preview.module.css";
 import { renderBullets, hasAnyValue } from "../utils";
 
 function ProjectsSection({ projects }) {
   if (!projects.some(hasAnyValue)) return null;
 
   return (
-    <section className="preview-section">
+    <section>
       <h2>Projects</h2>
       {projects.filter(hasAnyValue).map((proj) => (
-        <div className="section-entry" key={proj.id}>
+        <div className={styles.sectionEntry} key={proj.id}>
           {(proj.title || proj.link) && (
-            <div className="first-row">
+            <div className={styles.firstRow}>
               {proj.title && <strong>{proj.title}</strong>}
               {proj.link && (
                 <a
@@ -22,7 +23,7 @@ function ProjectsSection({ projects }) {
               )}
             </div>
           )}
-          {renderBullets(proj.description)}
+          {renderBullets(proj.description, styles.previewBullets)}
         </div>
       ))}
     </section>

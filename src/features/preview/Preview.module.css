@@ -2,7 +2,7 @@
    PREVIEW LAYOUT (SCREEN)
    ===================================================== */
 
-.preview-layout {
+.previewLayout {
   display: flex;
   justify-content: center;
   padding: 2rem;
@@ -14,7 +14,7 @@
    A4 PAGE
    ===================================================== */
 
-.a4-page {
+.a4Page {
   width: 210mm;
   height: 297mm;
   padding: 1.27cm;
@@ -28,7 +28,7 @@
    HEADER
    ===================================================== */
 
-.preview-header {
+.previewHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,20 +39,20 @@
    TYPOGRAPHY
    ===================================================== */
 
-.a4-page h1 {
+.a4Page h1 {
   font-size: 24pt;
   font-weight: 400;
   margin-bottom: 1mm;
 }
 
-.a4-page h2 {
+.a4Page h2 {
   font-size: 14pt;
   margin-bottom: 1mm;
   border-bottom: 1px solid #000;
 }
 
-.a4-page p,
-.a4-page span {
+.a4Page p,
+.a4Page span {
   line-height: 1.4;
 }
 
@@ -70,11 +70,11 @@ section {
   break-inside: avoid;
 }
 
-.section-entry {
+.sectionEntry {
   margin-bottom: 0.5mm;
 }
 
-.first-row {
+.firstRow {
   display: flex;
   justify-content: space-between;
 }
@@ -83,12 +83,12 @@ section {
    BULLET LISTS (Descriptions)
    ===================================================== */
 
-.preview-bullets {
+.previewBullets {
   list-style: disc;
   padding-left: 4mm;
 }
 
-.preview-bullets li {
+.previewBullets li {
   display: list-item;
   margin-bottom: 0;
 }
@@ -109,15 +109,15 @@ section {
 
 @media print {
   /* Hide editor UI */
-  .editor-layout,
+  .editorLayout,
   .sidebar,
-  .download-btn {
+  .downloadBtn {
     display: none !important;
   }
 
   /* Reset screen layout */
   body,
-  .preview-layout {
+  .previewLayout {
     margin: 0;
     padding: 0;
     display: block;
