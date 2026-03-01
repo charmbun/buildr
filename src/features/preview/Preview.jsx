@@ -1,0 +1,66 @@
+import "/src/styles/Preview.css";
+import SkillsSection from "./sections/SkillsPreview";
+import ExperienceSection from "./sections/ExperiencePreview";
+import EducationSection from "./sections/EducationPreview";
+import ProjectsSection from "./sections/ProjectsPreview";
+import CertificatesSection from "./sections/CertificatesPreview";
+
+const SECTION_RENDERERS = {
+  skills: SkillsSection,
+  experience: ExperienceSection,
+  education: EducationSection,
+  projects: ProjectsSection,
+  certificates: CertificatesSection,
+};
+
+function Preview({ data, sectionOrder }) {
+  const { personal } = data;
+
+  const contactLinks = [
+    personal.email && <span key="email">{personal.email}</span>,
+    personal.linkPortfolio && (
+      <a
+        key="portfolio"
+        href={`https://${personal.linkPortfolio}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {personal.linkPortfolio}
+      </a>
+    ),
+    personal.linkGithub && (
+      <a
+        key="github"
+        href={`https://${personal.linkGithub}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {personal.linkGithub}
+      </a>
+    ),
+  ].filter(Boolean);
+
+  return (
+    <div className="preview-layout">
+      <div className="a4-page">
+        {/* PERSONAL HEADER */}
+        {(personal.name || contactLinks.length > 0) && (
+          <header className="preview-header">
+            {personal.name && <h1>{personal.name}</h1>}
+            {contactLinks.length > 0 && (
+              <p>{contactLinks.reduce((p, c) => [p, " • ", c])}</p>
+            )}
+          </header>
+        )}
+
+        {/* ORDERED SECTIONS */}
+        {sectionOrder.map((key) => {
+          const Section = SECTION_RENDERERS[key];
+          return Section ? <Section key={key} {...data} /> : null;
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default Preview;

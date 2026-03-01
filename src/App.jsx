@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Editor from "./components/cv-editor/Editor";
-import Preview from "./components/cv-preview/Preview";
+import Editor from "./features/editor/Editor";
+import Preview from "./features/preview/Preview";
 import { emptyData, sampleData } from "./data";
 
 const STORAGE_KEY = "buildr-resume-v1";
