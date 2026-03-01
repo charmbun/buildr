@@ -64,7 +64,7 @@ textarea.formControl {
 .addButton,
 .saveButton {
   all: unset;
-  background-color: pink;
+  background-color: var(--accent);
   padding: 4px 8px;
   color: var(--primary);
   border-radius: 4px;

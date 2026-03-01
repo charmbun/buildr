@@ -18,10 +18,8 @@ select {
 :root {
   font-family: "Lato", sans-serif;
 
-  --header: #bdb2ff;
   --primary: #1f232c;
   --secondary: #242c3f;
-  --neutral: #ffffff;
   --accent: #bdb2ff;
 }
 

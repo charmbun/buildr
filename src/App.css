@@ -1,12 +1,11 @@
 .header {
   background-color: var(--primary);
-  color: var(--header);
+  color: var(--accent);
   padding: 16px;
   font-size: 18px;
-  font-weight: bold;
   text-align: center;
   letter-spacing: 30%;
-  border-bottom: 3px solid var(--header);
+  border-bottom: 3px solid var(--accent);
 }
 
 .body {
