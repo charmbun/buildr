@@ -1,3 +1,5 @@
+import styles from "./Sidebar.module.css";
+
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
@@ -14,14 +16,14 @@ function SortableSidebarItem({ id, icon, active, onClick }) {
     <button
       ref={setNodeRef}
       style={style}
-      className={`sidebar-item ${active ? "active" : ""}`}
+      className={`${styles.sidebarItem} ${active ? styles.active : ""}`}
       onClick={onClick}
     >
-      <span className="drag-handle" {...attributes} {...listeners}>
+      <span className={styles.dragHandle} {...attributes} {...listeners}>
         ☰
       </span>
 
-      <img src={icon} className="icon" />
+      <img src={icon} className={styles.icon} />
     </button>
   );
 }

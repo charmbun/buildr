@@ -1,4 +1,4 @@
-import "/src/styles/Sidebar.css";
+import styles from "./Sidebar.module.css";
 
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
@@ -61,16 +61,16 @@ function Sidebar({
   }
 
   return (
-    <nav className="sidebar">
+    <nav className={styles.sidebar}>
       {/* ───────── FIXED PERSONAL (NOT DRAGGABLE) ───────── */}
       <button
-        className={activeSection === FIXED_SECTION ? "active" : ""}
+        className={activeSection === FIXED_SECTION ? styles.active : ""}
         onClick={() => setActiveSection(FIXED_SECTION)}
       >
         <img
           src={sectionIcons[FIXED_SECTION]}
           alt="Personal"
-          className="icon"
+          className={styles.icon}
         />
       </button>
 

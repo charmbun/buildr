@@ -30,7 +30,7 @@
   box-shadow: inset 3px 0 0 var(--accent);
 }
 
-.sidebar-item {
+.sidebarItem {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -39,7 +39,7 @@
     background-color 0.15s ease;
 }
 
-.drag-handle {
+.dragHandle {
   cursor: grab;
   opacity: 0.5;
   font-size: 18px;
@@ -47,11 +47,11 @@
   color: pink;
 }
 
-.drag-handle:active {
+.dragHandle:active {
   cursor: grabbing;
 }
 
-.sidebar-item:hover .drag-handle {
+.sidebarItem:hover .dragHandle {
   opacity: 1;
 }
 
