@@ -8,12 +8,13 @@
 }
 
 .editor-content {
-  background-color: var(--secondary);
+  background-color: var(--primary);
   color: white;
 
   padding: 24px;
   display: flex;
   flex-direction: column;
+  border-radius: 0px 10px 10px 0px;
 }
 
 /* =====================================================

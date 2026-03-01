@@ -63,17 +63,22 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <Editor
-        data={data}
-        setData={setData}
-        onClear={clearResume}
-        onLoadSample={loadSample}
-        sectionOrder={sectionOrder}
-        setSectionOrder={setSectionOrder}
-      />
-      <Preview data={data} sectionOrder={sectionOrder} />
-    </div>
+    <>
+      <div className="header">buildR.</div>
+      <div className="body">
+        <div className="app">
+          <Editor
+            data={data}
+            setData={setData}
+            onClear={clearResume}
+            onLoadSample={loadSample}
+            sectionOrder={sectionOrder}
+            setSectionOrder={setSectionOrder}
+          />
+          <Preview data={data} sectionOrder={sectionOrder} />
+        </div>
+      </div>
+    </>
   );
 }
 

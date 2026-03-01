@@ -1,5 +1,21 @@
+.header {
+  background-color: var(--primary);
+  color: var(--header);
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 30%;
+  border-bottom: 3px solid var(--header);
+}
+
+.body {
+  padding: 32px;
+  background-color: var(--secondary);
+}
+
 .app {
   display: grid;
   grid-template-columns: 400px 1fr;
-  height: 100vh;
+  gap: 32px;
 }

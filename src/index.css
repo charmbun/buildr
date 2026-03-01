@@ -26,8 +26,9 @@ h2 {
 }
 
 :root {
-  --primary: #2d3e65;
-  --secondary: #2c3750;
-  --neutral: #242c3f;
-  --accent: pink;
+  --header: #bdb2ff;
+  --primary: #1f232c;
+  --secondary: #242c3f;
+  --neutral: #ffffff;
+  --accent: #bdb2ff;
 }

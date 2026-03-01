@@ -6,7 +6,8 @@
   display: flex;
   justify-content: center;
   padding: 2rem;
-  background: var(--neutral);
+  background: var(--primary);
+  border-radius: 10px;
 }
 
 /* =====================================================
