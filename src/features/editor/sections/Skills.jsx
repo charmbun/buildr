@@ -1,3 +1,4 @@
+import styles from "../EditorForm.module.css";
 import useEditableList from "../../../hooks/useEditableList";
 import deleteIcon from "../../../assets/icons/delete.svg";
 import { emptyData } from "../../../data";
@@ -24,7 +25,7 @@ function Skills({ data, setData }) {
               <li key={item.id}>
                 {/* Clicking the item selects it for editing */}
                 <button
-                  className="list-item"
+                  className={styles.listItem}
                   onClick={() => setActiveId(item.id)}
                 >
                   {item.groupName || "Untitled"}
@@ -32,17 +33,21 @@ function Skills({ data, setData }) {
 
                 {/* Button to delete the skills entry */}
                 <button
-                  className="delete-button"
+                  className={styles.deleteButton}
                   onClick={() => deleteItem(item.id)}
                 >
-                  <img src={deleteIcon} alt="Delete" className="delete-icon" />
+                  <img
+                    src={deleteIcon}
+                    alt="Delete"
+                    className={styles.deleteIcon}
+                  />
                 </button>
               </li>
             ))}
           </ul>
 
           {/* Button to add a new skills entry */}
-          <button className="add-button" onClick={addItem}>
+          <button className={styles.addButton} onClick={addItem}>
             + Add Skills
           </button>
         </>
@@ -50,10 +55,10 @@ function Skills({ data, setData }) {
         <>
           {/* EDIT VIEW — shown when an item is selected */}
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="groupName">SKILL GROUP</label>
             <input
-              className="form-control"
+              className={styles.formControl}
               name="groupName"
               id="groupName"
               value={skill.groupName}
@@ -61,11 +66,11 @@ function Skills({ data, setData }) {
             ></input>
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="items">LIST OF SKILLS</label>
 
             <textarea
-              className="form-control"
+              className={styles.formControl}
               name="items"
               id="items"
               value={skill.items}
@@ -74,17 +79,20 @@ function Skills({ data, setData }) {
           </div>
 
           {/* Action buttons for the active item */}
-          <div className="action-buttons">
+          <div className={styles.actionButtons}>
             {/* Delete the currently edited item */}
             <button
-              className="delete-button"
+              className={styles.deleteButton}
               onClick={() => deleteItem(skill.id)}
             >
               Delete
             </button>
 
             {/* Exit edit mode and return to list view */}
-            <button className="save-button" onClick={() => setActiveId(null)}>
+            <button
+              className={styles.saveButton}
+              onClick={() => setActiveId(null)}
+            >
               Save
             </button>
           </div>

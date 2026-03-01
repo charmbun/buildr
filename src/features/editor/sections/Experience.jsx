@@ -1,3 +1,4 @@
+import styles from "../EditorForm.module.css";
 import useEditableList from "../../../hooks/useEditableList";
 import deleteIcon from "../../../assets/icons/delete.svg";
 import { emptyData } from "../../../data";
@@ -36,7 +37,7 @@ function Experience({ data, setData }) {
               <li key={item.id}>
                 {/* Clicking the item selects it for editing */}
                 <button
-                  className="list-item"
+                  className={styles.listItem}
                   onClick={() => setActiveId(item.id)}
                 >
                   {item.company || "Untitled"}
@@ -44,17 +45,21 @@ function Experience({ data, setData }) {
 
                 {/* Button to delete the experience entry */}
                 <button
-                  className="delete-button"
+                  className={styles.deleteButton}
                   onClick={() => deleteItem(item.id)}
                 >
-                  <img src={deleteIcon} alt="Delete" className="delete-icon" />
+                  <img
+                    src={deleteIcon}
+                    alt="Delete"
+                    className={styles.deleteIcon}
+                  />
                 </button>
               </li>
             ))}
           </ul>
 
           {/* Button to add a new experience entry */}
-          <button className="add-button" onClick={addItem}>
+          <button className={styles.addButton} onClick={addItem}>
             + Add Experience
           </button>
         </>
@@ -62,10 +67,10 @@ function Experience({ data, setData }) {
         <>
           {/* EDIT VIEW — shown when an item is selected */}
           {EXPERIENCE_FIELDS.map(([name, label]) => (
-            <div className="form-group" key={name}>
+            <div className={styles.formGroup} key={name}>
               <label htmlFor={name}>{label}</label>
               <input
-                className="form-control"
+                className={styles.formControl}
                 name={name}
                 id={name}
                 value={exp[name]}
@@ -74,11 +79,11 @@ function Experience({ data, setData }) {
             </div>
           ))}
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="description">DESCRIPTION</label>
 
             <textarea
-              className="form-control"
+              className={styles.formControl}
               name="description"
               id="description"
               value={exp.description}
@@ -87,17 +92,20 @@ function Experience({ data, setData }) {
           </div>
 
           {/* Action buttons for the active item */}
-          <div className="action-buttons">
+          <div className={styles.actionButtons}>
             {/* Delete the currently edited item */}
             <button
-              className="delete-button"
+              className={styles.deleteButton}
               onClick={() => deleteItem(exp.id)}
             >
               Delete
             </button>
 
             {/* Exit edit mode and return to list view */}
-            <button className="save-button" onClick={() => setActiveId(null)}>
+            <button
+              className={styles.saveButton}
+              onClick={() => setActiveId(null)}
+            >
               Save
             </button>
           </div>

@@ -1,4 +1,4 @@
-import "/src/styles/Editor.css";
+import styles from "./Editor.module.css";
 import { useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
 
@@ -34,7 +34,7 @@ function Editor({
   const ActiveSectionComponent = SECTIONS[activeSection];
 
   return (
-    <div className="editor-layout">
+    <div className={styles.editorLayout}>
       <Sidebar
         activeSection={activeSection}
         setActiveSection={setActiveSection}
@@ -42,20 +42,20 @@ function Editor({
         setSectionOrder={setSectionOrder}
       />
 
-      <div className="editor-content">
+      <div className={styles.editorContent}>
         {ActiveSectionComponent && (
           <ActiveSectionComponent data={data} setData={setData} />
         )}
       </div>
 
-      <div className="editor-actions">
-        <button className="clear-btn" onClick={onClear}>
+      <div className={styles.editorActions}>
+        <button className={styles.clearBtn} onClick={onClear}>
           <img src={deleteIcon}></img>
         </button>
-        <button className="load-btn" onClick={onLoadSample}>
+        <button className={styles.loadBtn} onClick={onLoadSample}>
           <img src={loadIcon}></img>
         </button>
-        <button className="download-btn" onClick={() => window.print()}>
+        <button className={styles.downloadBtn} onClick={() => window.print()}>
           <img src={saveIcon}></img>
         </button>
       </div>

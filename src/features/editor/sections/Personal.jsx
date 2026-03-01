@@ -1,3 +1,5 @@
+import styles from "../EditorForm.module.css";
+
 function Personal({ data, setData }) {
   function handleChange(e) {
     const { name, value } = e.target;
@@ -15,10 +17,10 @@ function Personal({ data, setData }) {
     <section>
       <h2>Personal Information</h2>
 
-      <div className="form-group">
+      <div className={styles.formGroup}>
         <label htmlFor="name">NAME *</label>
         <input
-          className="form-control"
+          className={styles.formControl}
           type="text"
           name="name"
           id="name"
@@ -28,10 +30,10 @@ function Personal({ data, setData }) {
         />
       </div>
 
-      <div className="form-group">
+      <div className={styles.formGroup}>
         <label htmlFor="email">EMAIL *</label>
         <input
-          className="form-control"
+          className={styles.formControl}
           type="email"
           name="email"
           id="email"
@@ -41,10 +43,10 @@ function Personal({ data, setData }) {
         />
       </div>
 
-      <div className="form-group">
+      <div className={styles.formGroup}>
         <label htmlFor="linkPortfolio">PORTFOLIO LINK</label>
         <input
-          className="form-control"
+          className={styles.formControl}
           type="url"
           name="linkPortfolio"
           id="linkPortfolio"
@@ -54,10 +56,10 @@ function Personal({ data, setData }) {
         />
       </div>
 
-      <div className="form-group">
+      <div className={styles.formGroup}>
         <label htmlFor="linkGithub">GITHUB LINK</label>
         <input
-          className="form-control"
+          className={styles.formControl}
           type="url"
           name="linkGithub"
           id="linkGithub"
