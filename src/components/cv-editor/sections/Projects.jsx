@@ -15,7 +15,12 @@ function Projects({ data, setData }) {
     updateItem,
     deleteItem,
     addItem,
-  } = useEditableList(data.projects, setData, "projects", emptyData.projects);
+  } = useEditableList(
+    data.projects,
+    setData,
+    "projects",
+    emptyData.projects[0],
+  );
 
   return (
     <section>

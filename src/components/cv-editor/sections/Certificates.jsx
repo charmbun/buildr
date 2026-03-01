@@ -20,7 +20,7 @@ function Certificates({ data, setData }) {
     data.certificates,
     setData,
     "certificates",
-    emptyData.certificates
+    emptyData.certificates[0],
   );
 
   return (
