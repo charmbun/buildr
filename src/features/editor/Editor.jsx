@@ -35,29 +35,31 @@ function Editor({
 
   return (
     <div className={styles.editorLayout}>
-      <Sidebar
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-        sectionOrder={sectionOrder}
-        setSectionOrder={setSectionOrder}
-      />
+      <div className={styles.editorActions}>
+        <button className={styles.clearBtn} onClick={onClear}>
+          CLEAR ALL
+        </button>
+        <button className={styles.loadBtn} onClick={onLoadSample}>
+          LOAD SAMPLE
+        </button>
+        <button className={styles.downloadBtn} onClick={() => window.print()}>
+          SAVE AS PDF
+        </button>
+      </div>
+
+      <div className={styles.editorSidebar}>
+        <Sidebar
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+          sectionOrder={sectionOrder}
+          setSectionOrder={setSectionOrder}
+        />
+      </div>
 
       <div className={styles.editorContent}>
         {ActiveSectionComponent && (
           <ActiveSectionComponent data={data} setData={setData} />
         )}
-      </div>
-
-      <div className={styles.editorActions}>
-        <button className={styles.clearBtn} onClick={onClear}>
-          <img src={deleteIcon}></img>
-        </button>
-        <button className={styles.loadBtn} onClick={onLoadSample}>
-          <img src={loadIcon}></img>
-        </button>
-        <button className={styles.downloadBtn} onClick={() => window.print()}>
-          <img src={saveIcon}></img>
-        </button>
       </div>
     </div>
   );
